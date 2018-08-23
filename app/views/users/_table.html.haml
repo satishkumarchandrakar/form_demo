@@ -1,0 +1,35 @@
+%table
+  %thead
+    %tr
+      %th{:colspan => "3"}
+  %tbody
+    -if @users.present?
+      - @users.each do |user|
+        %tr
+          %td 
+            %p= user.first_name
+          %td
+            %p= user.last_name
+          %td
+            %p= user.mobile
+          %td
+            %p= user.email
+
+          %td= link_to 'Show', user, class: "button btn btn-outline-success"
+          %td= link_to 'Edit', edit_user_path(user), class: "button btn btn-outline-primary"
+          %td
+            %button.btn.btn-outline-danger{"data-target" => "#userModal#{user.id}", "data-toggle" => "modal", :type => "button"} delete
+
+            .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "userModalLabel", :id => "userModal#{user.id}", :role => "dialog", :tabindex => "-1"}
+              .modal-dialog{:role => "document"}
+                .modal-content
+                  .modal-header
+                    %h5#exampleModalLabel.modal-title Delete Confirmation
+                    %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+                      %span{"aria-hidden" => "true"} ×
+                  .modal-body
+                    Are you sure?
+                  / Delete button in the footer
+                  .modal-footer
+                    %button.btn.btn-outline-secondary{"data-dismiss" => "modal", :type => "button"} Cancel
+                    = link_to 'Delete', user, method: :delete, remote: true, class: 'btn btn-outline-danger'

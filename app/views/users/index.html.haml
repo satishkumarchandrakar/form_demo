@@ -1,0 +1,24 @@
+%p#notice= notice
+%h1 Users
+
+.row
+  .col-SM-12.col-lg-12.col-md-12
+    = form_tag(search_users_path,name: "user-search-form", :method => "get", id: "user-search-form",remote: true, onsubmit: "return validateForm()") do
+      .input-group
+        = text_field_tag :name,'',{ class: 'form-control col-md-6'}
+        = submit_tag "Search User", data: { disable_with: "Please wait..." }
+
+#userAddressTable
+  = render 'table'
+%br/
+= link_to 'New User', new_user_path, class: "button btn btn-outline-success"
+
+:javascript
+
+  function validateForm() {
+      var x = document.forms["user-search-form"]["name"].value;
+      if (x == "") {
+          alert("Name must be filled out");
+          return false;
+      }
+  }

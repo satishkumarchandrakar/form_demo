@@ -1,0 +1,6 @@
+$('.modal.fade.show').modal('toggle');
+$(".modal-backdrop.fade.show").remove();
+$("body").removeClass('modal-open');
+var notice = "#{flash.now[:notice]}"
+$("#notice").text(notice);
+$('#userAddressTable').html(" #{escape_javascript render 'table', action: "index" }");

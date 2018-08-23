@@ -1,0 +1,22 @@
+%p#notice= notice
+
+%p= @user.first_name
+
+%p= @user.last_name
+
+%p= @user.mobile
+
+%p= @user.email
+
+- @user.addresses.each do |address|
+  - if address.present?
+    %p= address.first_line
+    %p= address.second_line
+    %p= address.city
+    %p= address.pin
+    %p= address.state
+
+
+= link_to 'Edit', edit_user_path(@user)
+|
+= link_to 'Back', users_path
