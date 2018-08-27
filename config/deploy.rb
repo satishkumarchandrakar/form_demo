@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 
 # Change these
-server 'ubuntu@ec2-52-34-89-33.us-west-2.compute.amazonaws.com',port: 22, roles: [:web, :app, :db], primary: true
+server 'ubuntu@ec2-35-166-140-212.us-west-2.compute.amazonaws.com',port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:satishkumarchandrakar/form_demo.git'
 set :application,     'form_demo'
@@ -27,7 +27,7 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 set :ssh_options, {
   forward_agent: true,
   auth_methods: ["publickey"],
-  keys: "/home/webwerks/Documents/satish_projects/form_demo/newinstanceaws.pem"
+  keys: "/home/webwerks/Documents/satish_projects/form_demo/formdemo.pem"
 }
 
 
